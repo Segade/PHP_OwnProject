@@ -1,0 +1,42 @@
+
+
+ <script>
+function obterdata(){
+var f = new Date();
+var data=f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
+document.f1.data.value=data;
+}
+</script>
+
+
+<table cellspacing="2" cellpadding="2">
+
+<form name="f1" method="post" action="<?= $_SERVER['PHP_SELF'] ?>?corpo=altanova" onsubmit="return val_form_nova(this)">
+
+<tr>
+	<td>	titulo </td><td> <input type="Text" name="titulo" size="50" title="titulo" autofocus > </td>
+</tr>
+
+<tr>
+	<td>	data </td><td> <input type="Text" name="data" title="data da nova" size="10" "> </td>
+</tr>
+
+<tr>
+<td> Publicar </td><td> <input type="checkbox" name="publi" title="publicar" value="si"> </td>
+</tr>
+<tr>
+	<td>	Contido </td><td > <textarea name=contido title=contido cols=40 rows=10></textarea></td>
+</tr>
+
+
+
+<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td><input type="submit" value="Publicar nova" name="enviar" ></td>
+<td>	<input type="Reset" value="Borrar datos"></td>
+
+</tr>
+	</form>
+</table>
+
+
+

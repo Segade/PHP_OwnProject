@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>
+<? 
+		if(isset($_GET["corpo"])){ 
+	$oper=$_GET["corpo"];
+		switch ($oper){
+
+			case "erro":	include("../fichs_php/a.php");
+				break;
+
+			case "eventos":	echo "INSCRICIONS - ";
+	$current = "2";
+				break;
+			case "evento":	echo "INFO - ";
+	$current = "2";
+				break;
+			case "formevento":	echo "FORMULARIO INSCRICION - ";
+	$current = "2";
+				break;
+			case "nova":	echo "NOVA - ";
+	$current = "1";
+				break;
+			case "resultados":	echo "RESULTADOS - ";
+	$current = "3";
+				break;
+			case "gardarex":	echo "FIN DA INSCRICION - ";
+	$current = "2";
+				break;
+			case "listains":	echo "LISTAXE INSCRITOS - ";
+	$current = "2";
+				break;
+
+			default : $current = "0";
+		}// fin do switch
+
+}else{  // se a variable corpo da url non esta activa.
+	echo "PORTADA - ";
+	$current = "1";
+}// fin do if corpo.
+?>
+Carreira Popular Concello de Mes&iacute;a</title>
+		<meta charset="utf-8">
+		<meta name = "format-detection" content = "telephone=no" />
+		<link rel="icon" href="images/favicon.ico">
+		<link rel="shortcut icon" href="images/favicon.ico" />
+		<link rel="stylesheet" href="css/calendar.css">
+		<link rel="stylesheet" href="css/custom_1.css">
+		<link rel="stylesheet" href="css/style.css">
+		<script src="js/jquery.js"></script>
+		<script src="js/jquery-migrate-1.2.1.js"></script>
+		<script src="js/script.js"></script>
+		<script src="js/superfish.js"></script>
+		<script src="js/jquery.ui.totop.js"></script>
+		<script src="js/jquery.equalheights.js"></script>
+		<script src="js/jquery.mobilemenu.js"></script>
+		<script>
+			$(document).ready(function(){
+				$().UItoTop({ easingType: 'easeOutQuart' });
+			});
+		</script>
+		<!--[if lt IE 8]>
+			<div style=' clear: both; text-align:center; position: relative;'>
+				<a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+					<img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+				</a>
+			</div>
+		<![endif]-->
+		<!--[if lt IE 9]>
+			<script src="js/html5shiv.js"></script>
+			<link rel="stylesheet" media="screen" href="css/ie.css">
+		<![endif]-->
+	</head>
+	<body class="" id="top">
+		<div class="main">
+<!--==============================header=================================-->
+			<header>
+				<div class="container_12">
+					<div class="grid_12">
+						<h1>
+							<a href="index.html">
+								<img src="images/corredores_B.JPG" alt="Debuxo de corredores">
+							</a>
+						</h1>
+						<div class="menu_block ">
+							<nav class="horizontal-nav full-width horizontalNav-notprocessed">
+								<ul class="sf-menu">
+									<li <? if ($current == "1") echo ' class="current"'; ?>><a href="<?= $_SERVER['PHP_SELF'] ?>">PORTADA</a></li>
+									<li <? if ($current == "2") echo ' class="current"'; ?>><a href="<?= $_SERVER['PHP_SELF'] ?>?corpo=eventos">INSCRICIONS</a></li>
+									<li <? if ($current == "3") echo ' class="current"'; ?>><a href="<?= $_SERVER['PHP_SELF'] ?>?corpo=resultados">RESULTADOS</a></li>
+									<li <? if ($current == "4") echo ' class="current"'; ?>><a href="#">PERCORRIDOS</a></li>
+									<li <? if ($current == "5") echo ' class="current"'; ?>><a href="#">COMO CHEGAR</a></li>
+								</ul>
+							</nav>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</header>
+<!--==============================Content=================================-->
+			<div class="content">
+				<div class="container_12">
+
+					<div class="grid_4">
+						<p><b>Outros:</b></p> <br>
+						<ul class="list1 color1">
+							<li><a href="#">O tempo en Mes&iacute;a </a></li>
+							<li><a href="http://concellodemesia.es/" target="_blank">Web do concello de Mes&iacute;a </a></li>
+							<li><a href="https://www.facebook.com/pages/Deporte-Concello-Mes%C3%ADa/410479909027448" class="fa fa-facebook" target="_blank">Facebook <b>Deporte en Mes&iacute;a</b></a></li>
+						</ul>
+</div>
+
+					<div class="grid_5">
+<br>
+<?
+  	include("../bdd.php");
+ 	$enlace=Conectarse();
+
+		if(isset($_GET["corpo"])){ 
+
+	$oper=$_GET["corpo"];
+		switch ($oper){
+
+			case "erro":	include("../fichs_php/a.php");
+				break;
+
+
+			case "eventos":	include("../fichs_php/eventos.php");
+				break;
+			case "evento":	include("../fichs_php/evento.php");
+				break;
+			case "formevento":	include("../fichs_php/evento_form_inscri.php");
+				break;
+			case "nova":	include("../fichs_php/nova.php");
+				break;
+			case "resultados":	include("../fichs_php/results.php");
+				break;
+			case "gardarex":	include("../fichs_php/inscri_alta.php");
+				break;
+			case "listains":	include("../fichs_php/listaxe_inscritos_jq.php");
+				break;
+
+			case "regulpdf":	include("../fichs_php/regul_en_pdf.php");
+				break;
+
+			default : include("../fichs_php/novas.php");
+		}// fin do switch
+
+}else{  // se a variable corpo da url non esta activa.
+include("../fichs_php/novas.php");
+}// fin do if corpo.
+  	mysql_close($enlace); 
+
+?>
+
+<!-- fin da capa da informacion central -->
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+<!--==============================footer=================================-->
+		<footer>
+			<div class="container_12">
+				<div class="grid_12">
+****
+
+				</div>
+				<div class="clear"></div>
+			</div>
+		</footer>
+	</body>
+</html>

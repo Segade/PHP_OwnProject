@@ -1,0 +1,46 @@
+
+
+ <script>
+function obterdata(){
+var f = new Date();
+var data=f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
+document.f1.data.value=data;
+}
+</script>
+
+
+
+
+
+
+<table cellspacing="2" cellpadding="2">
+
+<form name="f1" method="post" action="<?= $_SERVER['PHP_SELF'] ?>?corpo=altares" onsubmit="return val_form_res(this)">
+
+
+<tr>
+	<td>	Carreira </td><td> <input type="Text" name="carreira" size="50" title="Nome da carreira"> </td>
+</tr>
+
+<tr>
+	<td>	data </td><td> <input type="Text" name="data" title="data da carreira" size="10" "> </td>
+</tr>
+
+
+<tr>
+	<td>	Ligazón </td><td > <input type="Text" name="ligazon" size="100" title="ligazon da carreira"></td>
+</tr>
+
+
+
+<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td><input type="submit" value="Engadir resultado" name="enviar" ></td>
+<td>	<input type="Reset" value="Borrar datos"></td>
+
+</tr>
+
+	</form>
+</table>
+
+
+

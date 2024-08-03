@@ -1,0 +1,37 @@
+<? 
+		if(isset($_GET["corpo"])){ 
+	$oper=$_GET["corpo"];
+		switch ($oper){
+
+			case "erro":	include("../fichs_php/a.php");
+				break;
+
+			case "eventos":	echo "INSCRICIONS - ";
+	$current = "2";
+				break;
+			case "evento":	echo "INFO - ";
+	$current = "2";
+				break;
+			case "formevento":	echo "FORMULARIO INSCRICION - ";
+	$current = "2";
+				break;
+			case "nova":	echo "NOVA - ";
+	$current = "1";
+				break;
+			case "resultados":	echo "RESULTADOS - ";				break;
+	$current = "3";
+			case "gardarex":	echo "FIN DA INSCRICION - ";
+	$current = "2";
+				break;
+			case "listains":	echo "LISTAXE INSCRITOS - ";
+	$current = "2";
+				break;
+
+			default : $current = "0";
+		}// fin do switch
+
+}else{  // se a variable corpo da url non esta activa.
+	echo "PORTADA - ";
+	$current = "1";
+}// fin do if corpo.
+?>
